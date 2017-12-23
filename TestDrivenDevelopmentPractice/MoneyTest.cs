@@ -9,11 +9,11 @@ namespace TestDrivenDevelopmentPractice
         public void TestMultiplication()
         {
             var five = new Dollar(5);
-            five.Times(2);
-            five.amount.Is(10);
+            var product = five.Times(2);
+            product.amount.Is(10);
 
-            five.Times(3);
-            five.amount.Is(15);
+            product = five.Times(3);
+            product.amount.Is(15);
         }
     }
 }
