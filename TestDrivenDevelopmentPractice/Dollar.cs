@@ -11,6 +11,8 @@ namespace TestDrivenDevelopmentPractice
             this.amount = amount;
         }
 
+        public override string Currency() => "USD";
+
         public override Money Times(int multiplier) => new Dollar(amount * multiplier);
     }
 }

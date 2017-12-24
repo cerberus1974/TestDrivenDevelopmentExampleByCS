@@ -10,6 +10,8 @@ namespace TestDrivenDevelopmentPractice
 
         public abstract Money Times(int amount);
 
+        public abstract string Currency();
+
         public override bool Equals(object obj)
         {
             var money = (Money)obj;

@@ -32,5 +32,12 @@ namespace TestDrivenDevelopmentPractice
 
             five.Times(3).Is(Money.Franc(15));
         }
+
+        [Fact]
+        public void TestCurrency()
+        {
+            "USD".Is(Money.Dollar(1).Currency());
+            "CHF".Is(Money.Franc(1).Currency());
+        }
     }
 }

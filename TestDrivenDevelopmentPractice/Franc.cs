@@ -11,6 +11,8 @@ namespace TestDrivenDevelopmentPractice
             this.amount = amount;
         }
 
+        public override string Currency() => "CHF";
+
         public override Money Times(int multiplier) => new Franc(amount * multiplier);
     }
 }
