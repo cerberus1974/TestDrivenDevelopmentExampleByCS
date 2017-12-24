@@ -15,5 +15,11 @@ namespace TestDrivenDevelopmentPractice
             product = five.Times(3);
             product.amount.Is(15);
         }
+
+        [Fact]
+        public void TestEquality()
+        {
+            new Dollar(5).Is(new Dollar(5));
+        }
     }
 }
