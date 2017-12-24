@@ -6,12 +6,10 @@ namespace TestDrivenDevelopmentPractice
 {
     class Franc : Money
     {
-        public Franc(int amount)
+        public Franc(int amount, string currency) : base(amount, currency)
         {
-            this.amount = amount;
-            currency = "CHF";
         }
 
-        public override Money Times(int multiplier) => new Franc(amount * multiplier);
+        public override Money Times(int multiplier) => Money.Franc(amount * multiplier);
     }
 }
