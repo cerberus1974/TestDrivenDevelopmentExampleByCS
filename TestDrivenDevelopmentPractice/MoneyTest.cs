@@ -20,5 +20,14 @@ namespace TestDrivenDevelopmentPractice
             new Dollar(5).Is(new Dollar(5));
             new Dollar(5).IsNot(new Dollar(6));
         }
+
+        [Fact]
+        public void TestFrancMultiplication()
+        {
+            var five = new Franc(5);
+            five.Times(2).Is(new Franc(10));
+
+            five.Times(3).Is(new Franc(15));
+        }
     }
 }
