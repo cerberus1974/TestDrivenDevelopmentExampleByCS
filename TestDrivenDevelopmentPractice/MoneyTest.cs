@@ -20,6 +20,7 @@ namespace TestDrivenDevelopmentPractice
         public void TestEquality()
         {
             new Dollar(5).Is(new Dollar(5));
+            new Dollar(5).IsNot(new Dollar(6));
         }
     }
 }
