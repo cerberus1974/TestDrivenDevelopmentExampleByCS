@@ -21,6 +21,7 @@ namespace TestDrivenDevelopmentPractice
             new Dollar(5).IsNot(new Dollar(6));
             new Franc(5).Is(new Franc(5));
             new Franc(5).IsNot(new Franc(6));
+            Assert.False(new Franc(5).Equals(new Dollar(5)));
         }
 
         [Fact]
