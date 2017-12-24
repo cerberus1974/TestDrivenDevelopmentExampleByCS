@@ -11,9 +11,6 @@ namespace TestDrivenDevelopmentPractice
             this.amount = amount;
         }
 
-        public Franc Times(int multiplier)
-        {
-            return new Franc(amount * multiplier);
-        }
+        public override Money Times(int multiplier) => new Franc(amount * multiplier);
     }
 }
