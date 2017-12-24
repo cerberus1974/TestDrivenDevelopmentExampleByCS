@@ -36,8 +36,8 @@ namespace TestDrivenDevelopmentPractice
         [Fact]
         public void TestCurrency()
         {
-            "USD".Is(Money.Dollar(1).Currency());
-            "CHF".Is(Money.Franc(1).Currency());
+            "USD".Is(Money.Dollar(1).Currency);
+            "CHF".Is(Money.Franc(1).Currency);
         }
     }
 }

@@ -8,9 +8,11 @@ namespace TestDrivenDevelopmentPractice
     {
         protected int amount;
 
+        protected string currency;
+
         public abstract Money Times(int amount);
 
-        public abstract string Currency();
+        public string Currency => currency;
 
         public override bool Equals(object obj)
         {

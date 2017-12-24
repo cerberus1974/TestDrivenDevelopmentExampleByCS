@@ -9,9 +9,8 @@ namespace TestDrivenDevelopmentPractice
         public Dollar(int amount)
         {
             this.amount = amount;
+            currency = "USD";
         }
-
-        public override string Currency() => "USD";
 
         public override Money Times(int multiplier) => new Dollar(amount * multiplier);
     }

@@ -9,9 +9,8 @@ namespace TestDrivenDevelopmentPractice
         public Franc(int amount)
         {
             this.amount = amount;
+            currency = "CHF";
         }
-
-        public override string Currency() => "CHF";
 
         public override Money Times(int multiplier) => new Franc(amount * multiplier);
     }
