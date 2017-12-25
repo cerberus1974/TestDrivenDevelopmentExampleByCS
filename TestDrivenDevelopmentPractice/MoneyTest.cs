@@ -74,5 +74,11 @@ namespace TestDrivenDevelopmentPractice
             var result = bank.Reduce(Money.Franc(2), "USD");
             result.Is(Money.Dollar(1));
         }
+
+        [Fact]
+        public void TestIdentityRate()
+        {
+            new Bank().Rate("USD", "USD").Is(1);
+        }
     }
 }
