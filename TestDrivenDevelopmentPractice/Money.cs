@@ -26,8 +26,8 @@ namespace TestDrivenDevelopmentPractice
 
         public Money Times(int multiplier) => new Money(amount * multiplier, currency);
 
-        static public Money Dollar(int amount) => new Dollar(amount, "USD");
+        static public Money Dollar(int amount) => new Money(amount, "USD");
 
-        static public Money Franc(int amount) => new Franc(amount, "CHF");
+        static public Money Franc(int amount) => new Money(amount, "CHF");
     }
 }
