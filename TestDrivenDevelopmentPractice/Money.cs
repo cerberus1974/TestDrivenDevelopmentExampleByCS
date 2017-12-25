@@ -28,6 +28,8 @@ namespace TestDrivenDevelopmentPractice
 
         public IExpression Plus(Money addend) => new Sum(this, addend);
 
+        public Money Reduce(string to) => this;
+
         static public Money Dollar(int amount) => new Money(amount, "USD");
 
         static public Money Franc(int amount) => new Money(amount, "CHF");

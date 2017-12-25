@@ -6,5 +6,6 @@ namespace TestDrivenDevelopmentPractice
 {
     interface IExpression
     {
+        Money Reduce(string to);
     }
 }
