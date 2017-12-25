@@ -39,5 +39,11 @@ namespace TestDrivenDevelopmentPractice
             "USD".Is(Money.Dollar(1).Currency);
             "CHF".Is(Money.Franc(1).Currency);
         }
+
+        [Fact]
+        public void TestDifferentClassEquarity()
+        {
+            new Money(10, "CHF").Is(new Franc(10, "CHF"));
+        }
     }
 }

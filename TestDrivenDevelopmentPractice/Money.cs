@@ -4,13 +4,11 @@ using System.Text;
 
 namespace TestDrivenDevelopmentPractice
 {
-    abstract class Money
+    class Money
     {
         protected int amount;
 
         protected string currency;
-
-        public abstract Money Times(int amount);
 
         public string Currency => currency;
 
@@ -23,8 +21,10 @@ namespace TestDrivenDevelopmentPractice
         public override bool Equals(object obj)
         {
             var money = (Money)obj;
-            return amount == money.amount && GetType() == money.GetType();
+            return amount == money.amount && Currency == money.Currency;
         }
+
+        public Money Times(int multiplier) => new Money(amount * multiplier, currency);
 
         static public Money Dollar(int amount) => new Dollar(amount, "USD");
 
