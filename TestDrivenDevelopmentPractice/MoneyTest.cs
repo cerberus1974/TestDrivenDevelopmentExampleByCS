@@ -28,5 +28,15 @@ namespace TestDrivenDevelopmentPractice
             "USD".Is(Money.Dollar(1).Currency);
             "CHF".Is(Money.Franc(1).Currency);
         }
+
+        [Fact]
+        public void TestSimpleAddition()
+        {
+            var five = Money.Dollar(5);
+            var sum = five.Plus(five);
+            var bank = new Bank();
+            var reduced = bank.Reduce(sum, "USD");
+            reduced.Is(Money.Dollar(10));
+        }
     }
 }
