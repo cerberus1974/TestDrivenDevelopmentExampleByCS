@@ -38,5 +38,24 @@ namespace TestDrivenDevelopmentPractice
             var reduced = bank.Reduce(sum, "USD");
             reduced.Is(Money.Dollar(10));
         }
+
+        [Fact]
+        public void TestPlusReturnsSum()
+        {
+            var five = Money.Dollar(5);
+            var result = five.Plus(five);
+            var sum = (Sum)result;
+            sum.Augend.Is(five);
+            sum.Addend.Is(five);
+        }
+
+        [Fact]
+        public void TestReduceSum()
+        {
+            var sum = new Sum(Money.Dollar(3), Money.Dollar(4));
+            var bank = new Bank();
+            var result = bank.Reduce(sum, "USD");
+            result.Is(Money.Dollar(7));
+        }
     }
 }

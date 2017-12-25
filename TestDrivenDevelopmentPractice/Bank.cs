@@ -8,7 +8,8 @@ namespace TestDrivenDevelopmentPractice
     {
         public Money Reduce(IExpression source, string to)
         {
-            return Money.Dollar(10);
+            var sum = source as Sum;
+            return sum.Reduce(to);
         }
     }
 }
