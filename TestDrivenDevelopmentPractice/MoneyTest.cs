@@ -65,5 +65,14 @@ namespace TestDrivenDevelopmentPractice
             var result = bank.Reduce(Money.Dollar(1), "USD");
             result.Is(Money.Dollar(1));
         }
+
+        [Fact]
+        public void TestReduceMoneyDifferentCurrency()
+        {
+            var bank = new Bank();
+            bank.AddRate("CHF", "USD", 2);
+            var result = bank.Reduce(Money.Franc(2), "USD");
+            result.Is(Money.Dollar(1));
+        }
     }
 }

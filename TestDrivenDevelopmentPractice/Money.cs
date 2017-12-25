@@ -28,7 +28,11 @@ namespace TestDrivenDevelopmentPractice
 
         public IExpression Plus(Money addend) => new Sum(this, addend);
 
-        public Money Reduce(string to) => this;
+        public Money Reduce(Bank bank, string to)
+        {
+            var rate = bank.Rate(currency, to);
+            return new Money(Amount / rate, to);
+        }
 
         static public Money Dollar(int amount) => new Money(amount, "USD");
 
