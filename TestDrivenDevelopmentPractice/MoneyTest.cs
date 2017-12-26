@@ -8,7 +8,7 @@ namespace TestDrivenDevelopmentPractice
         [Fact]
         public void TestMultiplication()
         {
-            Money five = Money.Dollar(5);
+            var five = Money.Dollar(5);
             five.Times(2).Is(Money.Dollar(10));
 
             five.Times(3).Is(Money.Dollar(15));
@@ -79,6 +79,17 @@ namespace TestDrivenDevelopmentPractice
         public void TestIdentityRate()
         {
             new Bank().Rate("USD", "USD").Is(1);
+        }
+
+        [Fact]
+        public void TestMixedAddition()
+        {
+            IExpression fiveBucks = Money.Dollar(5);
+            IExpression tenFrancs = Money.Franc(10);
+            var bank = new Bank();
+            bank.AddRate("CHF", "USD", 2);
+            var result = bank.Reduce(fiveBucks.Plus(tenFrancs), "USD");
+            result.Is(Money.Dollar(10));
         }
     }
 }

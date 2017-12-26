@@ -24,9 +24,9 @@ namespace TestDrivenDevelopmentPractice
             return Amount == money.Amount && Currency == money.Currency;
         }
 
-        public Money Times(int multiplier) => new Money(Amount * multiplier, currency);
+        public IExpression Times(int multiplier) => new Money(Amount * multiplier, currency);
 
-        public IExpression Plus(Money addend) => new Sum(this, addend);
+        public IExpression Plus(IExpression addend) => new Sum(this, addend);
 
         public Money Reduce(Bank bank, string to)
         {
