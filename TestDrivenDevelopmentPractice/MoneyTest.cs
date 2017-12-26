@@ -5,13 +5,23 @@ namespace TestDrivenDevelopmentPractice
 {
     public class MoneyTest
     {
+        IExpression fiveBucks;
+        IExpression tenFrancs;
+        Bank bank;
+
+        public MoneyTest()
+        {
+            fiveBucks = Money.Dollar(5);
+            tenFrancs = Money.Franc(10);
+            bank = new Bank();
+            bank.AddRate("CHF", "USD", 2);
+        }
+
         [Fact]
         public void TestMultiplication()
         {
-            var five = Money.Dollar(5);
-            five.Times(2).Is(Money.Dollar(10));
-
-            five.Times(3).Is(Money.Dollar(15));
+            fiveBucks.Times(2).Is(Money.Dollar(10));
+            fiveBucks.Times(3).Is(Money.Dollar(15));
         }
 
         [Fact]
@@ -32,9 +42,7 @@ namespace TestDrivenDevelopmentPractice
         [Fact]
         public void TestSimpleAddition()
         {
-            var five = Money.Dollar(5);
-            var sum = five.Plus(five);
-            var bank = new Bank();
+            var sum = fiveBucks.Plus(fiveBucks);
             var reduced = bank.Reduce(sum, "USD");
             reduced.Is(Money.Dollar(10));
         }
@@ -42,18 +50,16 @@ namespace TestDrivenDevelopmentPractice
         [Fact]
         public void TestPlusReturnsSum()
         {
-            var five = Money.Dollar(5);
-            var result = five.Plus(five);
+            var result = fiveBucks.Plus(fiveBucks);
             var sum = (Sum)result;
-            sum.Augend.Is(five);
-            sum.Addend.Is(five);
+            sum.Augend.Is(fiveBucks);
+            sum.Addend.Is(fiveBucks);
         }
 
         [Fact]
         public void TestReduceSum()
         {
             var sum = new Sum(Money.Dollar(3), Money.Dollar(4));
-            var bank = new Bank();
             var result = bank.Reduce(sum, "USD");
             result.Is(Money.Dollar(7));
         }
@@ -61,7 +67,6 @@ namespace TestDrivenDevelopmentPractice
         [Fact]
         public void TestReduceMoney()
         {
-            var bank = new Bank();
             var result = bank.Reduce(Money.Dollar(1), "USD");
             result.Is(Money.Dollar(1));
         }
@@ -69,8 +74,6 @@ namespace TestDrivenDevelopmentPractice
         [Fact]
         public void TestReduceMoneyDifferentCurrency()
         {
-            var bank = new Bank();
-            bank.AddRate("CHF", "USD", 2);
             var result = bank.Reduce(Money.Franc(2), "USD");
             result.Is(Money.Dollar(1));
         }
@@ -84,10 +87,6 @@ namespace TestDrivenDevelopmentPractice
         [Fact]
         public void TestMixedAddition()
         {
-            IExpression fiveBucks = Money.Dollar(5);
-            IExpression tenFrancs = Money.Franc(10);
-            var bank = new Bank();
-            bank.AddRate("CHF", "USD", 2);
             var result = bank.Reduce(fiveBucks.Plus(tenFrancs), "USD");
             result.Is(Money.Dollar(10));
         }
@@ -95,10 +94,6 @@ namespace TestDrivenDevelopmentPractice
         [Fact]
         public void TestSumPlusMoney()
         {
-            IExpression fiveBucks = Money.Dollar(5);
-            IExpression tenFrancs = Money.Franc(10);
-            var bank = new Bank();
-            bank.AddRate("CHF", "USD", 2);
             var sum = new Sum(fiveBucks, tenFrancs).Plus(fiveBucks);
             var result = bank.Reduce(sum, "USD");
             result.Is(Money.Dollar(15));
@@ -107,10 +102,6 @@ namespace TestDrivenDevelopmentPractice
         [Fact]
         public void TestSumTimes()
         {
-            IExpression fiveBucks = Money.Dollar(5);
-            IExpression tenFrancs = Money.Franc(10);
-            var bank = new Bank();
-            bank.AddRate("CHF", "USD", 2);
             var sum = new Sum(fiveBucks, tenFrancs).Times(2);
             var result = bank.Reduce(sum, "USD");
             result.Is(Money.Dollar(20));
