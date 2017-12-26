@@ -103,5 +103,17 @@ namespace TestDrivenDevelopmentPractice
             var result = bank.Reduce(sum, "USD");
             result.Is(Money.Dollar(15));
         }
+
+        [Fact]
+        public void TestSumTimes()
+        {
+            IExpression fiveBucks = Money.Dollar(5);
+            IExpression tenFrancs = Money.Franc(10);
+            var bank = new Bank();
+            bank.AddRate("CHF", "USD", 2);
+            var sum = new Sum(fiveBucks, tenFrancs).Times(2);
+            var result = bank.Reduce(sum, "USD");
+            result.Is(Money.Dollar(20));
+        }
     }
 }
