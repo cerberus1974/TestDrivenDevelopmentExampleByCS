@@ -21,9 +21,6 @@ namespace TestDrivenDevelopmentPractice
             return new Money(amount, to);
         }
 
-        public IExpression Plus(IExpression addend)
-        {
-            return null;
-        }
+        public IExpression Plus(IExpression addend) => new Sum(this, addend);
     }
 }
